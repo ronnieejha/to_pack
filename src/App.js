@@ -5,12 +5,11 @@ function Topack({ topack, index, completeTopack, removeTopack }) {
   return (
     <div
       className="topack"
-      style={{ textDecoration: topack.isCompleted ? "line-through" : "" }}
+      style={{ textDecoration: topack.isCompleted ? "line-through" : "",backgroundColor: topack.isCompleted ? "#96c7d5" :"" }}
     >
       {topack.text}
-
-      <div>
-        <button onClick={() => completeTopack(index)}>Complete</button>
+      <div >
+        <button onClick={() => completeTopack(index)}>Packed</button>
         <button onClick={() => removeTopack(index)}>x</button>
       </div>
     </div>
@@ -29,6 +28,7 @@ function TopackForm({ addTopack }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label>Add more items </label>
       <input
         type="text"
         className="input"
@@ -78,6 +78,9 @@ function App() {
 
   return (
     <div className="app">
+      <div className="heading">
+      <h1> Travel CheckList </h1>
+      </div>
       <div className="topack-list">
         {todos.map((topack, index) => (
           <Topack
